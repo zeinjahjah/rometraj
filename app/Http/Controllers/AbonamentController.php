@@ -17,7 +17,7 @@ class AbonamentController extends Controller
     public function index()
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Abonament::all()
         ], 200);
     }
@@ -38,7 +38,7 @@ class AbonamentController extends Controller
 
         $abonament =  Abonament::create($inputs);
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => $abonament
         ], 200);
     }
@@ -52,7 +52,7 @@ class AbonamentController extends Controller
     public function show($id)
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Abonament::find($id)
         ], 200);
     }
@@ -69,7 +69,7 @@ class AbonamentController extends Controller
         $abonament =  Abonament::find($id);
         $abonament->update($request->all());
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => $abonament
         ], 200);
     }
@@ -83,7 +83,7 @@ class AbonamentController extends Controller
     public function destroy($id)
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Abonament::destroy($id)
         ], 200);
     }

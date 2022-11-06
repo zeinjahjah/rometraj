@@ -15,7 +15,7 @@ class CommentController extends Controller
     public function index()
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Comment::all()
         ], 200);
     }
@@ -31,7 +31,7 @@ class CommentController extends Controller
         $inputs = $request->all();
 
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Comment::create($inputs)
         ], 200);
     }
@@ -45,7 +45,7 @@ class CommentController extends Controller
     public function show($id)
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Comment::find($id)
         ], 200);
     }
@@ -62,7 +62,7 @@ class CommentController extends Controller
         $comment =  Comment::find($id);
         $comment->update($request->all());
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => $comment
         ], 200);
     }
@@ -76,7 +76,7 @@ class CommentController extends Controller
     public function destroy($id)
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Comment::destroy($id)
         ], 200);
     }

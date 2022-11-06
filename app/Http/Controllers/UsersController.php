@@ -25,7 +25,7 @@ class UsersController extends Controller
         if ($user->type == 'admin') {
             $data = User::where("type", $type)->get();
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => $data
             ], 200);
         } else {
@@ -55,7 +55,7 @@ class UsersController extends Controller
             $user =  User::find($id);
             $user->update($request->all());
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => $user
             ], 200);
         } else {
@@ -64,6 +64,20 @@ class UsersController extends Controller
                 'status' => 0
             ], 401);
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return response([
+            'status' => 1,
+            'data' => User::find($id)
+        ], 200);
     }
 
     /**
@@ -82,7 +96,7 @@ class UsersController extends Controller
         if ($user->type == 'admin' || $user->id == $id) {
 
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => User::destroy($id)
             ], 200);
         } else {
@@ -109,7 +123,7 @@ class UsersController extends Controller
         if ($user->id == $user_id) {
             $data = History::where('user_id', $user_id)->get();
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => $data
             ], 200);
         } else {
@@ -133,7 +147,7 @@ class UsersController extends Controller
             'film_id' => $film_id
         ];
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' =>  History::create($inputs)
 
         ], 200);
@@ -156,7 +170,7 @@ class UsersController extends Controller
         if ($user->id == $user_id) {
             $data = ToWatch::where('user_id', $user_id)->get();
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => $data
             ], 200);
         } else {
@@ -180,7 +194,7 @@ class UsersController extends Controller
             'film_id' => $film_id
         ];
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' =>  ToWatch::create($inputs)
 
         ], 200);
@@ -201,7 +215,7 @@ class UsersController extends Controller
             'film_id' => $film_id
         ];
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' =>  ToWatch::create($inputs)
 
         ], 200);

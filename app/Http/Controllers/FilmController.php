@@ -19,7 +19,7 @@ class FilmController extends Controller
     public function index(Request $request)
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Film::all()
         ], 200);
     }
@@ -51,7 +51,7 @@ class FilmController extends Controller
 
             $film =  Film::create($request->all());
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => $film
             ], 200);
         } else {
@@ -71,7 +71,7 @@ class FilmController extends Controller
     public function show($id)
     {
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Film::find($id)
         ], 200);
     }
@@ -94,7 +94,7 @@ class FilmController extends Controller
             $film =  Film::find($id);
             $film->update($request->all());
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => $film
             ], 200);
         } else {
@@ -121,7 +121,7 @@ class FilmController extends Controller
         if ($user->type == 'admin') {
 
             return response([
-                'status' => 0,
+                'status' => 1,
                 'data' => Film::destroy($id)
             ], 200);
         } else {
@@ -142,7 +142,7 @@ class FilmController extends Controller
     {
         $search = Film::where('name', 'like', '%' . $name . '%')->get();
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => $search
         ], 200);
     }
@@ -155,11 +155,6 @@ class FilmController extends Controller
      */
     public function getRating($film_id)
     {
-        // $search = Film::where('name', 'like', '%' . $name . '%')->get();
-        // return response([
-        //     'status' => 0,
-        //     'data' => $search
-        // ], 200);.
         $rates = Rating::where('film_id', $film_id)->get();
         $rate_1 = $rates->filter(function ($rate) {
             return $rate->rate == 1;
@@ -194,7 +189,7 @@ class FilmController extends Controller
         $rate_result = $max / $n;
 
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => ['rate' => number_format($rate_result, 2)]
         ], 200);
     }
@@ -219,7 +214,7 @@ class FilmController extends Controller
         ];
 
         return response([
-            'status' => 0,
+            'status' => 1,
             'data' => Rating::create($input)
         ], 200);
     }

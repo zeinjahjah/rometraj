@@ -30,8 +30,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // users
     Route::get('/users/{type}', [UsersController::class, 'index']);
+    Route::get('/users/{id}', [UsersController::class, 'show']);
     Route::put('/users/{id}', [UsersController::class, 'update']);
     Route::delete('/users/{id}', [UsersController::class, 'destroy']);
+
     // user history
     Route::get('/users/history/{user_id}', [UsersController::class, 'getHistory']);
     Route::get('/users/history/{user_id}/{film_id}', [UsersController::class, 'AddHistory']);
